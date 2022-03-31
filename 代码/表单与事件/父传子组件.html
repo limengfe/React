@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>父更新传子组件</title>
+    <script src="../react.development.js"></script>
+    <script src="../react-dom.development.js"></script>
+    <script src="../babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+
+     class Content extends React.Component{
+         render(){
+             return<div>
+                <button onClick = {this.props.updateStateProp}>点我</button>
+                <h4>{this.props.myDataProp}</h4>
+                </div>
+         }
+     }
+     
+     
+    class HelleMessage extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = {value:"Hello Li!"};
+            this.handleChange = this.handleChange.bind(this)
+        }
+
+        handleChange (){
+            this.setState({value:'Hello Niu'})
+        }
+        render(){
+            var value = this.state.value;
+            return <div>
+                 <Content myDataProp={value}  updateStateProp ={this.handleChange} ></Content>
+                </div>
+        }
+    }
+     ReactDOM.render(
+         <HelleMessage/>,
+     document.getElementById('example')
+     )
+    </script>
+</body>
+</html>

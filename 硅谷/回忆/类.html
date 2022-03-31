@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+    1.类中的构造器不是必须要写的，如果想写一些自己独有的属性，需要用构造器
+    2.子类继承父类，且子类使用构造器，就必须在构造器调用super
+    3.类中的方法是放在原型上的，供实例使用，如果通过实例调用的方法，那么this就是实例
+    */
+    // 定义一个类
+    class Person {
+      // 构造方法
+      constructor(name,age){
+        this.name = name 
+        this.age = age
+      }
+      // 一般方法
+      /*
+       1.speck放在了哪里？ Person的原型对象上，供实例是使用，，所以p1.speak可以调出函数
+       2.speak的this指向谁？如果是通过person实例调用，那就是就是person实例对象
+      */
+
+      speak(){
+        // console.log('巴拉巴拉')
+        console.log(`我是${this.name}我今年${this.age}`);
+      }
+    }
+    // 创建一个Person的实例对象
+    // const p1 =  new Person('飞飞',18);
+    // console.log(p1);
+    // p1.speak();
+
+    // 创建子类
+      class Student extends Person {
+        constructor(name,age,grade){
+         super(name,age)  //super来说明继承的属性
+         this.grade = grade
+       }
+      //  重写父类继承过来的方法
+      speak(){
+        // console.log('巴拉巴拉')
+        console.log(`我是${this.name},我今年${this.age},我现在${this.grade}.`);
+      }
+      } 
+
+
+           const p1 =  new Student('飞飞',18,"大四");
+           console.log(p1);
+           p1.speak();
+  </script>
+</body>
+</html>

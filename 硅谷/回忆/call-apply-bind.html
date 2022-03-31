@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function demo() {
+      console.log(this);
+    }
+    demo();//window
+    demo.call(1); //this指向1
+    demo.apply(2);//this指向2
+
+    const x = demo.bind(3);
+          x();    //this指向3
+     //传参
+    //       function demo(a,b,c) {
+    //   console.log(this);
+    // }
+    // demo();//window
+    // demo.call(1,10,20,30); //this指向1
+    // demo.apply(2,[10,20,30]);//this指向2
+
+    // const x = demo.bind(3);
+    //       x();    //this指向3
+
+  </script> 
+</body>
+</html>

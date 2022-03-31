@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 基本写法
+    // let obj = {a:1,b:2,c:3};
+    // let arr = [1,2,3];
+
+    // // 传统写法
+    // // const c = obj.c;
+
+    // //结构赋值写法
+
+    // // 对象
+    // const {c} = obj;
+    // //数组
+    // const [,,a] = arr;
+    
+    // console.log(c);
+    // console.log(a);
+
+    let obj = {a:1,b:2,c:{x:1,y:2}};   //取c里的y
+
+    // 正常的结构赋值
+    //  const {y} = obj.c;
+    // 连续的结构赋值
+        const {c:{y}} = obj;
+    // 连续的结构赋值+重命名
+    const {c:{y:value}} = obj;
+    console.log(value);
+  </script>
+</body>
+</html>

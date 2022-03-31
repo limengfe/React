@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../react.development.js"></script>
+    <script src="../react-dom.development.js"></script>
+    <script src="../babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+      class Popper extends React.Component{
+          constructor(){
+              super();
+              this.state =  {name:'Hello World'}
+          }
+
+          preventPop(name, e){  //事件对象要放最后
+              e.preventDefault();
+              alert(name);
+          }
+        //  创建虚拟DOM
+          render(){
+              return <div>
+                <p>hello</p>
+                {/*通过bind()方法传递参数*/}
+                <a href="http://reactjs.org" onClick={this.preventPop.bind(this.state.name)}>Click</a>
+                </div>
+          }
+      }
+      //   渲染到实际DOM
+      ReactDOM.render(
+         <Popper/>,document.getElementById('example')
+     )
+    </script>
+</body>
+</html>

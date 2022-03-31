@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jsx语法</title>
+   <!-- 第一步引入核心库 -->
+   <script src="../../js/react.development.js"></script>   
+   <!--  第二部引入支持DOM的库   将虚拟DOM转化为真实DOM -->
+   <script src="../../js/react-dom.development.js"></script>
+   <!-- 第三步引入支持转化JSX和ES5的库 -->
+   <script src="../../js/babel.min.js"></script>  
+   <style>
+     .title{
+       background-color: aqua;
+     }
+   </style>
+</head>
+</head>
+<body>
+  <div id="test"></div>
+    <script type="text/babel">
+      let data="HHH"
+      // 创建虚拟DOM
+      // const VDOM = <h1 >HHH</h1>
+      // const VDOM = <h1  className="title">{data}</h1>
+      // const VDOM = <h1 style={{color:"red",fontSize:"60px"}} className="title">{data}</h1>
+      const VDOM = (
+        <div>
+          <h1>你好</h1>
+          <h1>好的</h1>
+          <input type="text"/>
+          {/*<hi>giao</hi>*/}
+          </div>
+      )
+      // 渲染到真实DOM
+      ReactDOM.render(VDOM,document.getElementById('test'));
+
+      /*
+      jsx语法规则：
+      1.创建虚拟DOM，不要写引号
+      2.标签中要混入JS要使用{}
+      3.标签中样式的类名要使用className
+      4.标签中的内联样式要用style={{color:"red"}},属性名注意转化为驼峰
+      5.只能有一个标签
+      6.标签必须闭合
+      7.关于标签首字母
+         --首字母小写-能在html找到就是用，找不到系统会提升开发组件使用，但页面显示出文本内容。
+         --首字母大写-大写的话就是组件开发使用，如果找到组件就用，找不到报错。
+      8.jsx注释花括号里面斜杠里面*   
+      */
+    </script>
+</body>
+</html>

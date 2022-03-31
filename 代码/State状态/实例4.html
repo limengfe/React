@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实例4</title>
+    <script src="../react.development.js"></script>
+    <script src="../react-dom.development.js"></script>
+    <script src="../babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        // 定义一个函数式组件
+    function FormattedDate(props){
+        return <h2>现在是{props.date.toLocaleTimeString()}</h2>
+    }
+        //定义一个类式组件
+    class Clock extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = { date: new Date()}
+        }
+    
+        
+
+        componentDidMount(){
+            this.timerID = setInterval(()=>{return this.tick(),1000})
+        };
+
+        componentWillUnmount(){
+            clearInterval(this.timerID);
+        }
+
+        tick(){
+            this.setState({
+                date:new Date()
+            });
+        }
+        render(){
+            return( 
+                <div>
+                <h1>你好啊</h1>
+                <FormattedDate date={this.state.date}/>
+                </div>
+                )
+        };
+    }
+    //    添加一个组件
+        function App() { 
+            return(
+                <div>
+                    <Clock/>
+                    <Clock/>
+                    <Clock/>
+                    </div>
+            )
+         }
+    ReactDOM.render(
+        <App/>,document.getElementById('example')
+    )
+    </script>
+</body>
+</html>

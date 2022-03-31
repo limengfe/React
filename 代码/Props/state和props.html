@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>state和props</title>
+    <script src="../react.development.js"></script>
+    <script src="../react-dom.development.js"></script>
+    <script src="../babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+   
+
+    <script type="text/babel">
+        // 我们可以在父组件中设置 state， 并通过在子组件上使用 props 将其传递到子组件上。
+        // 父组件
+     class WebSite extends React.Component{
+         constructor(){
+             super();
+
+             this.state ={
+                 name:'菜鸟教程',
+                 site:'http://www.runoob.com'
+             }
+         }
+         render(){
+             return(
+                <div>
+                <Name name={this.state.name}/>  {/*使用子组件Name*/}
+                <Link site = {this.state.site}/>{/*使用子组件Site*/}
+                </div>
+             );
+            }
+          }
+          //子组件    {/*使用父组件状态name值*/}
+          class Name extends React.Component{
+              render(){
+                  return(  
+                      <h1>{this.props.name}</h1>       
+                  )
+              }
+          }
+          //子组件    {/*使用父组件状态site值*/}
+          class Link extends React.Component{
+              render(){
+                  return(
+                   <a href={this.props.site}>          {/*<a href="www.baidu.com">百度</a>*/}
+                    {this.props.site}
+                    </a> 
+                  )
+              }
+          }
+
+
+          ReactDOM.render(
+  <WebSite />,
+  document.getElementById('example')
+);
+    </script>
+</body>
+</html>

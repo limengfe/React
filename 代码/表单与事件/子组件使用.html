@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>子组件更新</title>
+    <script src="https://cdn.staticfile.org/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.staticfile.org/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.staticfile.org/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+    //在父组件通过创建事件句柄 (handleChange) ，并作为 prop (updateStateProp) 传递到你的子组件上。
+    //虚拟DOM 内容区
+      var Content = React.createClass({
+          render: function (){
+              return <div>
+                <input type="text" value={this.props.myDataProp} onChange={this.props.updateStateProp}/>
+                <h1>{this.props.myDataProp}</h1>
+                </div>
+          }
+      });
+      //虚拟DOM 事件更新
+      var HelloMessage = React.createClass({
+         getInitialState:function(){
+             return {value:'Hello Runoob!'}
+         },
+          handleChange:function(event){
+                this.setState({value:event.target.value});  //求求你了别加=了
+          },
+
+          render:function(){
+              var value =this.state.value;
+              return <div>
+                <Content myDataProp ={value} 
+                updateStateProp ={this.handleChange}></Content>
+                </div>
+          }
+      })
+      
+     //实现DOM
+     ReactDOM.render(
+         <HelloMessage/>,
+     document.getElementById('example'))
+    </script>
+</body>
+</html>

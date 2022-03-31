@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获得聚焦</title>
+    <script src="../react.development.js"></script>
+    <script src="../react-dom.development.js"></script>
+    <script src="../babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+    class MyComponent extends React.Component{
+        constructor(props){
+            super(props);
+            this.myRef = React.createRef();
+        }
+        handleChange (){
+            // 使用原生的 DOM API 获取焦点
+            this.myRef.current.focus(); //获得聚焦
+        }
+
+        render(){
+             //  当组件插入到 DOM 后，ref 属性添加一个组件的引用于到 this.refs
+            return <div>                                    {/*return 要么加(jsx) 要么return<左标签> 在同一行*/}
+                <input type="text" ref={this.myRef}/>
+                <input 
+                type="button" 
+                value="点我获得聚焦" 
+                onClick ={this.handleChange.bind(this)}/>
+                </div>
+        }
+    }
+
+     ReactDOM.render(
+         <MyComponent/>,
+         document.getElementById('example'))
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../react.development.js"></script>
+    <script src="../react-dom.development.js"></script>
+    <script src="../babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+       function ListItem(props){              //组件1 写一个li
+        return <li>{props.value}</li>
+       }
+
+       function NumberList (props){          //组件2  写一个ul   li的话用ListItems
+           const numbers = props.numbers;
+           const listItems = numbers.map((number)=>   //写一个map 的key ,  value        
+            <ListItem key={number.toString()} value={number}/>  //使用组件1
+           );
+           return(
+               <ul>{listItems}</ul>
+           )
+       }
+         const numbers =[1,2,3,4,5];
+         ReactDOM.render(
+             <NumberList numbers = {numbers}/>,document.getElementById('example')
+         )
+    </script>
+</body>
+</html>

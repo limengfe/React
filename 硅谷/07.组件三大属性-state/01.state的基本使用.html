@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello React</title>
+    <!-- 第一步引入核心库 -->
+    <script src="../../js/react.development.js"></script>   
+    <!--  第二部引入支持DOM的库   将虚拟DOM转化为真实DOM -->
+    <script src="../../js/react-dom.development.js"></script>
+    <!-- 第三步引入支持转化JSX和ES5的库 -->
+    <script src="../../js/babel.min.js"></script>  
+</head>
+<body>
+  <div id="test"></div>
+   <script type="text/babel"> /*此处必须写text/babel*/
+  //  定义一个类组件
+    class Weather extends React.Component{
+      // 构造器
+      constructor(props){
+        super(props)
+        this.state = { isHot:false } //初始化state
+        // 给实例自身追加一个同名的changeWeather,这个方法是根据原型changeWeather用bind生成的，它this没问题
+        this.changeWeather = this.changeWeather.bind(this);
+      }
+      //必须要写的
+      render(){
+        const {isHot} = this.state;
+      //  console.log(this)  this指向Weather组件实例对象
+      // return <h1 onClick={show}>今天天气{this.state.isHot?'热':'不热'}</h1>
+      return <h1 onClick={this.changeWeather}>今天天气{isHot?'热':'不热'}</h1>
+    }
+     //程序员根据业务逻辑自己定义的事件回调
+      changeWeather(){
+        /*
+      show放在那？ weather的原型对象上，供实例使用
+      show的this是谁？ 如果通过weather调用，那就是weather实例对象
+                       如果是通过回调函数调用，那么this就是defined
+      */
+       //获取isHot
+       console.log('@',this)
+       //取值反赋过去 
+      // 注意：state不可直接修改，需要使用setState
+      //  this.state.isHot = true;
+      const isHot = this.state.isHot;
+      this.setState({isHot:!isHot});
+     }
+
+    }
+    //渲染到页面
+    ReactDOM.render(
+      <Weather/>,document.getElementById('test')
+        )
+
+
+   </script> 
+
+</body>
+</html>

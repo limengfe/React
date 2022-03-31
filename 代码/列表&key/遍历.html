@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../react.development.js"></script>
+    <script src="../react-dom.development.js"></script>
+    <script src="../babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+    const number =[1,2,3,4,5];
+    const listItems = number.map((number)=>{
+       return  <li>{number}</li>
+    });
+     ReactDOM.render(
+     <ul>{listItems}</ul>    
+     ,document.getElementById('example'))
+    </script>
+</body>
+</html>

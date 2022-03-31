@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js创建</title>
+ <!-- 第一步引入核心库 -->
+ <script src="../../js/react.development.js"></script>   
+ <!--  第二部引入支持DOM的库   将虚拟DOM转化为真实DOM -->
+ <script src="../../js/react-dom.development.js"></script>
+</head>
+<body>
+  <div id="test"></div>
+  <script type="text/javascript">
+    // 1.创建虚拟DOM
+    let VDOM = React.createElement("h1",{id:"hello"},React.createElement("span",null, "Hello,World!"));
+    //2.渲染到DOM
+    ReactDOM.render(VDOM,document.getElementById("test"));
+  </script>
+</body>
+</html>

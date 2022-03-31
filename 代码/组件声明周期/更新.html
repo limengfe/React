@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../react.development.js"></script>
+    <script src="../react-dom.development.js"></script>
+    <script src="../babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    
+    <script type="text/babel">
+    class Button extends React.Component{
+        constructor(props){
+            super(props);
+                this.state = {date : 0};
+                this.setNewNumber = this.setNewNumber.bind(this);
+            }
+            
+            setNewNumber(){
+                this.setState({date:this.state.date+1})
+            }
+            render(){
+                return(
+                    <div>
+                        <button onClick={this.setNewNumber}>INCREMENT</button>
+                        <Content myNumber = {this.state.date}></Content>
+                        </div>
+                );
+            }
+            
+    }
+        
+          class Content extends React.Component {
+           componentWillMount() {
+           console.log('Component WILL MOUNT!')
+           }
+          componentDidMount() {
+            console.log('Component DID MOUNT!')
+            }
+         componentWillReceiveProps(newProps) {
+         console.log('Component WILL RECEIVE PROPS!')
+   }
+         shouldComponentUpdate(newProps, newState) {
+        return true;
+  }
+        componentWillUpdate(nextProps, nextState) {
+         console.log('Component WILL UPDATE!');
+  }
+        componentDidUpdate(prevProps, prevState) {
+        console.log('Component DID UPDATE!')
+  }
+        componentWillUnmount() {
+         console.log('Component WILL UNMOUNT!')
+  }
+    
+  render(){
+      return(
+          <div>
+            <h3>{this.props.myNumber}</h3>
+            </div>
+      );
+  }
+}
+  ReactDOM.render(
+      <div>
+        <Button/>
+        </div>,
+        document.getElementById('example')
+  )
+    </script>
+</body>
+</html>

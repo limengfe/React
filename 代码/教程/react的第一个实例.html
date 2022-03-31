@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一个实例</title>
+    <!-- 第一步引入核心库 -->
+   <script src="../react.development.js"></script>   
+   <!--  第二部引入支持DOM的库 -->
+   <script src="../react-dom.development.js"></script>
+   <!-- 第三步引入支持转化JSX和ES5的库 -->
+   <script src="../babel.min.js"></script>
+    
+</head>
+<body>
+    <!--1.创建容器  -->
+    <div id="example"></div>
+    <script type="text/babel">  
+       //2.创建虚拟DOM   
+        let xumi  = <h1>Hello World</h1>  
+       //3.渲染虚拟DOM到页面        固定语法（虚拟DOM名，真实的容器名） 
+         ReactDOM.render(xumi, document.getElementById('example') )
+    </script>
+</body>
+</html>

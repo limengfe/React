@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello React</title>
+    <!-- 第一步引入核心库 -->
+    <script src="../../js/react.development.js"></script>   
+    <!--  第二部引入支持DOM的库   将虚拟DOM转化为真实DOM -->
+    <script src="../../js/react-dom.development.js"></script>
+    <!-- 第三步引入支持转化JSX和ES5的库 -->
+    <script src="../../js/babel.min.js"></script>  
+</head>
+<body>
+  <div id="test"></div>
+   
+   <script type="text/babel"> /*此处必须写text/babel*/
+     //1.定义一个组件
+       function Demo () {
+         console.log(this);//undefined 此处的this直接丢失了，因为babel严格模式翻译了 ，所以函数式组件只能定义简单的
+           return <h2>我是函数定义的组件（适用与简单函数组件的定义）</h2>
+       }
+     //2.渲染组件到DOM
+     ReactDOM.render(
+       <Demo/>,document.getElementById('test')
+         )
+      /*
+        执行ReactDOM.....会发生什么
+         1.React解析数组标签，寻找组件定义的位置
+         2.React发现组件时函数定义的，React会直接调用，将返回的虚拟DOM渲染到页面
+      */   
+   </script> 
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello React</title>
+    <!-- 第一步引入核心库 -->
+    <script src="../../js/react.development.js"></script>   
+    <!--  第二部引入支持DOM的库   将虚拟DOM转化为真实DOM -->
+    <script src="../../js/react-dom.development.js"></script>
+    <!-- 第三步引入支持转化JSX和ES5的库 -->
+    <script src="../../js/babel.min.js"></script>  
+</head>
+<body>
+  <div id="test"></div>
+   <script type="text/babel"> /*此处必须写text/babel*/
+   //1.定义一个类
+    class Demo extends React.Component{
+      /*
+        1.render方法是放在哪里的？ -----Demo的原型对象上
+        2.render的this是谁        -----Demo的实例对象
+      */ 
+       render(){
+         console.log(this);//Demo实例对象<=>Demo组件实例对象
+         return <h2>类定义的组件，用于复杂</h2>
+       }
+    }
+    // 2.渲染组件到页面
+    ReactDOM.render(
+      <Demo/>,document.getElementById('test')
+        )
+
+      /*
+      执行React....发生了什么
+      1.React解析组件，寻找Demo组件定义的位置
+      2.React发现组件是用类定义的，React创建一个实例对象 ---d...
+      3.通过d...去调用render方法
+      */   
+   </script> 
+
+</body>
+</html>

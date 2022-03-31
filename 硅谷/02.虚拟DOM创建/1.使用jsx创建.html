@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jsx创建</title>
+    <!-- 第一步引入核心库 -->
+    <script src="../../js/react.development.js"></script>   
+    <!--  第二部引入支持DOM的库   将虚拟DOM转化为真实DOM -->
+    <script src="../../js/react-dom.development.js"></script>
+    <!-- 第三步引入支持转化JSX和ES5的库 -->
+    <script src="../../js/babel.min.js"></script>  
+</head>
+<body>
+  <div id="test"></div>
+   <script type="text/babel"> /*此处必须写text/babel*/
+    //   1.创建一个虚拟DOM
+     let VDOM = (
+       <h1 id="hello">
+        <span> Hello,React!!!</span>   
+      </h1>);   //此处一定不要加引号啊，这不是JS
+    //   2.让React将虚拟DOM转化为真实DOM  
+      ReactDOM.render(VDOM,document.getElementById("test"));//不加#这就是JSX
+   </script> 
+/* 
+  关于jsx，我们要知道的
+  1.jsx的出现就是为了让程序更加方便创建虚拟DOM
+  2.jsx最终经过babel的编程，变成了js的写法。
+*/
+</body>
+</html>

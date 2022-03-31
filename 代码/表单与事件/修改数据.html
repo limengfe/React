@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改数据</title>
+    <script src="../react.development.js"></script>
+    <script src="../react-dom.development.js"></script>
+    <script src="../babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+    class Hello extends React.Component{
+        constructor(props){
+            super(props);
+            this.state={value:"Hello Runoob!"};  //初始数据值
+            this.handleChange = this.handleChange.bind(this);
+        }
+
+        handleChange(){
+            this.setState({value:'Hello Li'})   //修改数据
+        }
+        render(){
+            var value = this.state.value;
+            return(
+                <div>
+                    <button onClick={this.handleChange}>点我啊</button>
+                    <h2>{value}</h2>
+                    </div>
+            );
+        }
+    }
+
+     ReactDOM.render(<Hello/>,document.getElementById('example'))
+    </script>
+</body>
+</html>

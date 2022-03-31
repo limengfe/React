@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello React</title>
+    <!-- 第一步引入核心库 -->
+    <script src="../../js/react.development.js"></script>   
+    <!--  第二部引入支持DOM的库   将虚拟DOM转化为真实DOM -->
+    <script src="../../js/react-dom.development.js"></script>
+    <!-- 第三步引入支持转化JSX和ES5的库 -->
+    <script src="../../js/babel.min.js"></script>  
+</head>
+<body>
+  <div id="test"></div>
+  <div id="test2"></div>
+  <div id="test3"></div>
+   <script type="text/babel"> /*此处必须写text/babel*/
+     
+    //  1.定义一个Person组件
+     class Person extends React.Component{
+      //  初始化状态
+      render() {
+        const {name,sex,age} = this.props;
+        return(
+          <ul>
+            <li>姓名：{name}</li>
+            <li>年龄：{age}</li>
+            <li>性别：{sex}</li>
+            </ul>
+        )
+      }
+     }
+
+    //  2.渲染到页面
+        ReactDOM.render(
+      <Person name="飞飞" sex="男" age="18"/>,document.getElementById('test')   
+        )  //这样写太麻烦了
+        let couple = {
+          name:"lili",
+          age:"43",
+          sex:"m"
+        }
+
+        ReactDOM.render(
+      <Person name="猪丽" sex="女" age="17"/>,document.getElementById('test2')
+        )    
+
+        ReactDOM.render(
+      <Person {...couple}/>,document.getElementById('test3')
+        ) 
+   </script> 
+
+</body>
+</html>
